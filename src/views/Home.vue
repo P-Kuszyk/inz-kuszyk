@@ -1,11 +1,21 @@
 <template>
   <div>
-    <h1>Strona Główna</h1>
+    <Navbar />
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Strona Główna</h1>
+        <p>Treść strony głównej...</p>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue'
+
 export default {
-  name: 'Home'
+  components: {
+    Navbar
+  }
 }
 </script>
