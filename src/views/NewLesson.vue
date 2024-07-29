@@ -1,11 +1,21 @@
 <template>
   <div>
-    <h1>Nowa lekcja</h1>
+    <Navbar />
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Nowa lekca</h1>
+        <p>Pozdrooo</p>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
+import Navbar from '@/components/Navbar.vue'
+
 export default {
-  name: 'NewLesson'
+  components: {
+    Navbar
+  }
 }
 </script>
