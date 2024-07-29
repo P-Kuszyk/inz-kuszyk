@@ -44,9 +44,9 @@
         <div class="navbar-item">
           <div class="buttons">
             <a class="button is-primary">
-              <strong>Sign up</strong>
+              <strong>Zarejestruj się</strong>
             </a>
-            <a class="button is-light"> Log in </a>
+            <a class="button is-light"> Zaloguj </a>
           </div>
         </div>
       </div>
@@ -81,7 +81,8 @@ export default {
 }
 
 .navbar-brand img {
-  max-height: 3.5rem; /* Adjust size as needed */
+  max-height: 3.5rem;
+  margin-right: 2rem;
 }
 
 .level {
