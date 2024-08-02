@@ -59,7 +59,7 @@ export default {
 }
 
 .banner {
-  width: 950px;
+  width: 80%;
   height: 150px;
   background-color: #f0f0f0;
   display: flex;

@@ -14,3 +14,10 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+#app {
+  background-color: $main-color;
+  min-height: 100vh;
+}
+</style>
