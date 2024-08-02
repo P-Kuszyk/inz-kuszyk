@@ -43,7 +43,7 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button is-success">
               <strong>Zarejestruj się</strong>
             </a>
             <a class="button is-light"> Zaloguj </a>
@@ -70,14 +70,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .navbar {
-  background-color: #333;
+  background-color: $navbar-color;
 }
 
-.navbar-item,
+.navbar-item {
+  color: $navbar-item;
+}
 .navbar-burger {
-  color: white;
+  color: $navbar-item;
 }
 
 .navbar-brand img {
@@ -103,5 +105,24 @@ export default {
 
 .level-item .button {
   margin-left: 0.5rem;
+}
+
+.field.has-addons {
+  .control {
+    .input {
+      background-color: #d3d3d3; // Kolor tła inputa
+      border-color: $main-color; // Kolor obramowania inputa
+      width: 450px;
+
+      &::placeholder {
+        color: black;
+      }
+    }
+
+    .button {
+      color: $navbar-item;
+      border-color: $main-color;
+    }
+  }
 }
 </style>

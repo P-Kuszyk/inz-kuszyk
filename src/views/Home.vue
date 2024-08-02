@@ -40,7 +40,7 @@ export default {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .section {
   text-align: center;
 }
@@ -54,7 +54,6 @@ export default {
   margin-top: 5rem;
 
   :nth-child(2) {
-    background-color: $main-color;
     margin-top: 2rem;
   }
 }
