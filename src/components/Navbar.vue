@@ -2,7 +2,12 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <router-link class="navbar-item" to="/">
-        <img src="https://bulma.io/assets/brand/Bulma%20Logo%20White.png" width="112" height="28" />
+        <img
+          src="https://bulma.io/assets/brand/Bulma%20Logo%20White.png"
+          width="112"
+          height="28"
+          alt="Logo"
+        />
       </router-link>
 
       <a
@@ -12,7 +17,7 @@
         @click="toggleNavbar"
         aria-label="menu"
         aria-expanded="false"
-        data-target="navbarBasicExample"
+        :data-target="'navbarBasicExample'"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -43,23 +48,55 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <a class="button is-success">
+            <button class="button is-success" @click="showRegister = true">
               <strong>Zarejestruj się</strong>
-            </a>
-            <a class="button is-light"> Zaloguj </a>
+            </button>
+            <button class="button is-light" @click="showLogin = true">Zaloguj</button>
           </div>
         </div>
       </div>
+    </div>
+
+    <div v-if="showLogin" class="modal is-active">
+      <div class="modal-background" @click="showLogin = false"></div>
+      <div class="modal-content">
+        <div class="box">
+          <LoginForm />
+        </div>
+      </div>
+      <button class="modal-close is-large" @click="showLogin = false" aria-label="close"></button>
+    </div>
+
+    <div v-if="showRegister" class="modal is-active">
+      <div class="modal-background" @click="showRegister = false"></div>
+      <div class="modal-content">
+        <div class="box">
+          <RegisterForm />
+        </div>
+      </div>
+      <button
+        class="modal-close is-large"
+        @click="showRegister = false"
+        aria-label="close"
+      ></button>
     </div>
   </nav>
 </template>
 
 <script>
+import LoginForm from '@/components/LoginForm.vue'
+import RegisterForm from '@/components/RegisterForm.vue'
+
 export default {
-  name: 'Navbar',
+  components: {
+    LoginForm,
+    RegisterForm
+  },
   data() {
     return {
-      isActive: false
+      isActive: false,
+      showLogin: false,
+      showRegister: false
     }
   },
   methods: {
@@ -70,59 +107,38 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-.navbar {
-  background-color: $navbar-color;
-}
-
-.navbar-item {
-  color: $navbar-item;
-}
-.navbar-burger {
-  color: $navbar-item;
-}
-
-.navbar-brand img {
-  max-height: 3.5rem;
-  margin-right: 2rem;
-}
-
-.level {
-  padding: 1rem;
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
-}
-
-.level-left,
-.level-right {
+<style scoped>
+.modal.is-active {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.level-item {
-  margin-right: 1rem;
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 10, 10, 0.86);
 }
 
-.level-item .button {
-  margin-left: 0.5rem;
+.modal-content {
+  position: relative;
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  max-width: 500px;
+  width: 90%;
 }
 
-.field.has-addons {
-  .control {
-    .input {
-      background-color: #d3d3d3; // Kolor tła inputa
-      border-color: $main-color; // Kolor obramowania inputa
-      width: 250px;
-
-      &::placeholder {
-        color: black;
-      }
-    }
-
-    .button {
-      color: $navbar-item;
-      border-color: $main-color;
-    }
-  }
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 </style>
