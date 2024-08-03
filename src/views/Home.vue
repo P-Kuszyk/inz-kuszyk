@@ -1,9 +1,11 @@
 <script>
 import Navbar from '@/components/Navbar.vue'
+import Banner from '@/components/Banner.vue'
 
 export default {
   components: {
-    Navbar
+    Navbar,
+    Banner
   }
 }
 </script>
@@ -16,7 +18,7 @@ export default {
         <h1 class="title">Strona Główna</h1>
         <p>Treść strony głównej...</p>
         <div class="banners">
-          <div class="banner">
+          <Banner>
             <!-- Pierwszy baner -->
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -24,8 +26,8 @@ export default {
             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
-          </div>
-          <div class="banner">
+          </Banner>
+          <Banner>
             <!-- Drugi baner -->
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
@@ -33,7 +35,7 @@ export default {
             dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
-          </div>
+          </Banner>
         </div>
       </div>
     </section>
@@ -51,7 +53,7 @@ export default {
   align-items: flex-end;
   justify-content: center;
   gap: 20px;
-  margin-top: 5rem;
+  margin-top: 3rem;
 
   :nth-child(2) {
     margin-top: 2rem;

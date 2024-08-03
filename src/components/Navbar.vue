@@ -112,7 +112,7 @@ export default {
     .input {
       background-color: #d3d3d3; // Kolor tła inputa
       border-color: $main-color; // Kolor obramowania inputa
-      width: 450px;
+      width: 250px;
 
       &::placeholder {
         color: black;
