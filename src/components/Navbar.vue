@@ -57,6 +57,7 @@
       </div>
     </div>
 
+    <!-- Modal do logowania -->
     <div v-if="showLogin" class="modal is-active">
       <div class="modal-background" @click="showLogin = false"></div>
       <div class="modal-content">
@@ -67,6 +68,7 @@
       <button class="modal-close is-large" @click="showLogin = false" aria-label="close"></button>
     </div>
 
+    <!-- Modal do rejestracji -->
     <div v-if="showRegister" class="modal is-active">
       <div class="modal-background" @click="showRegister = false"></div>
       <div class="modal-content">
@@ -107,38 +109,59 @@ export default {
 }
 </script>
 
-<style scoped>
-.modal.is-active {
+<style scoped lang="scss">
+.navbar {
+  background-color: $navbar-color;
+}
+
+.navbar-item {
+  color: $navbar-item;
+}
+.navbar-burger {
+  color: $navbar-item;
+}
+
+.navbar-brand img {
+  max-height: 3.5rem;
+  margin-right: 2rem;
+}
+
+.level {
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+}
+
+.level-left,
+.level-right {
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
-.modal-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(10, 10, 10, 0.86);
+.level-item {
+  margin-right: 1rem;
 }
 
-.modal-content {
-  position: relative;
-  background: white;
-  border-radius: 6px;
-  padding: 1rem;
-  max-width: 500px;
-  width: 90%;
+.level-item .button {
+  margin-left: 0.5rem;
 }
 
-.modal-close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.field.has-addons {
+  .control {
+    .input {
+      background-color: #d3d3d3; // Kolor tła inputa
+      border-color: $main-color; // Kolor obramowania inputa
+      width: 250px;
+
+      &::placeholder {
+        color: black;
+      }
+    }
+
+    .button {
+      color: $navbar-item;
+      border-color: $main-color;
+    }
+  }
 }
 </style>
