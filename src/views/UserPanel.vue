@@ -62,7 +62,6 @@ export default {
 </script>
 
 <style scoped>
-/* Style dla komunikatu i modala */
 .notification {
   margin-bottom: 1rem;
 }
