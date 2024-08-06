@@ -152,6 +152,7 @@ export default {
       background-color: #d3d3d3; // Kolor tła inputa
       border-color: $main-color; // Kolor obramowania inputa
       width: 250px;
+      color: black;
 
       &::placeholder {
         color: black;
@@ -159,7 +160,8 @@ export default {
     }
 
     .button {
-      color: $navbar-item;
+      color: black;
+      background-color: $navbar-item;
       border-color: $main-color;
     }
   }

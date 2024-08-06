@@ -31,22 +31,22 @@ export default {
   data() {
     return {
       showLogin: false,
-      isAuthenticated: false, // Możesz zastąpić to prawdziwą logiką uwierzytelniania
+      isAuthenticated: false, // Do dodania funkcjonalność
       showNotification: true // Czy komunikat o konieczności logowania powinien być wyświetlany
     }
   },
   methods: {
     checkAuthentication() {
-      // Tutaj dodaj logikę sprawdzania, czy użytkownik jest zalogowany
-      this.isAuthenticated = false // Przykład: ustawienie na false oznacza, że użytkownik nie jest zalogowany
+      // czy użytkownik jest zalogowany
+      this.isAuthenticated = false
     },
     openLoginForm() {
-      // Ustaw opóźnienie przed wyświetleniem formularza logowania
       setTimeout(() => {
+        // Opóźnienie do wyświetlenia komunikatu, kiedy użytkownik jest niezalogowany
         if (!this.isAuthenticated) {
           this.showLogin = true
         }
-      }, 1000) // Opóźnienie 2 sekundy
+      }, 1000) // Opóźnienie 1 sekunde
     },
     closeNotification() {
       this.showNotification = false
