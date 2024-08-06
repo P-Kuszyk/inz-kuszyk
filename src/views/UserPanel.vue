@@ -100,7 +100,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .field {
   width: 15%;
   margin: auto;
@@ -130,6 +130,14 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+.button.is-light {
+  display: flex;
+  margin: auto;
+  margin-top: 1rem;
+  width: 80%;
+}
+
 .notification {
   margin-bottom: 1rem;
 }
