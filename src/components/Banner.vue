@@ -20,5 +20,6 @@ export default {
   justify-content: center;
   border: 2px solid #ccc;
   border-radius: 10px;
+  text-align: center;
 }
 </style>

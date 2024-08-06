@@ -149,8 +149,8 @@ export default {
 .field.has-addons {
   .control {
     .input {
-      background-color: #d3d3d3; // Kolor tła inputa
-      border-color: $main-color; // Kolor obramowania inputa
+      background-color: #d3d3d3;
+      border-color: $main-color;
       width: 250px;
       color: black;
 

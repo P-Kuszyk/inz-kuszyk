@@ -19,5 +19,6 @@ export default {
 #app {
   background-color: $main-color;
   min-height: 100vh;
+  color: $font-color;
 }
 </style>
