@@ -48,10 +48,15 @@
 
         <div class="navbar-item">
           <div class="buttons">
-            <button class="button is-success" @click="showRegister = true">
-              <strong>Zarejestruj się</strong>
-            </button>
-            <button class="button is-light" @click="showLogin = true">Zaloguj</button>
+            <!-- Jeśli jest zalogowany -->
+            <template v-if="isAuthenticated"> Witaj xyz! </template>
+            <!-- Jeśli nie jest zalogowany-->
+            <template v-else>
+              <button class="button is-success" @click="showRegister = true">
+                <strong>Zarejestruj się</strong>
+              </button>
+              <button class="button is-light" @click="showLogin = true">Zaloguj</button>
+            </template>
           </div>
         </div>
       </div>
@@ -62,7 +67,7 @@
       <div class="modal-background" @click="showLogin = false"></div>
       <div class="modal-content">
         <div class="box">
-          <LoginForm />
+          <LoginForm @login-success="handleLoginSuccess" />
         </div>
       </div>
       <button class="modal-close is-large" @click="showLogin = false" aria-label="close"></button>
@@ -98,7 +103,8 @@ export default {
     return {
       isActive: false,
       showLogin: false,
-      showRegister: false
+      showRegister: false,
+      isAuthenticated: false // true = zalogowany | false = niezalogowany
     }
   },
   methods: {
