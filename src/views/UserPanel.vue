@@ -151,10 +151,14 @@ export default {
 }
 .select select {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.4rem;
   border-radius: 4px;
   font-size: 1rem;
   appearance: none;
+  background-color: $banner-background;
+  color: black;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
 }
 .banner {
   width: 40%;
