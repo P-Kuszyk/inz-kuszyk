@@ -1,11 +1,13 @@
 <template>
   <div>
     <Navbar />
+
     <!-- Użytkownik niezalogowany -->
     <div v-if="!isAuthenticated" class="notification is-warning">
       <button class="delete" @click="closeNotification"></button>
       Musisz się zalogować, aby uzyskać dostęp do tej strony.
     </div>
+
     <div v-if="showLogin" class="modal is-active">
       <div class="modal-background" @click="showLogin = false"></div>
       <div class="modal-content">
@@ -15,6 +17,7 @@
       </div>
       <button class="modal-close is-large" @click="showLogin = false" aria-label="close"></button>
     </div>
+
     <!-- Użytkownik zalogowany -->
     <div v-if="isAuthenticated">
       <Banner>
@@ -24,6 +27,7 @@
         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
       </Banner>
+
       <div class="field">
         <label class="label">Wybierz język:</label>
         <div class="control">
@@ -36,6 +40,7 @@
           </div>
         </div>
       </div>
+
       <div class="field">
         <label class="label">Wybierz stopień zaawansowania:</label>
         <div class="select">
@@ -46,9 +51,16 @@
           </select>
         </div>
       </div>
+
       <div class="field">
         <button class="button is-light" @click="confirmSelection">Potwierdź</button>
       </div>
+      <Banner>
+        <div v-if="savedLanguage && savedLevel" class="notification">
+          <p>Wybrany język: {{ savedLanguage }}</p>
+          <p>Poziom zaawansowania: {{ savedLevel }}</p>
+        </div>
+      </Banner>
     </div>
   </div>
 </template>
@@ -67,35 +79,58 @@ export default {
   data() {
     return {
       showLogin: false,
-      isAuthenticated: false, // Do dodania funkcjonalność
+      isAuthenticated: false, // Czy użytkownik jest zalogowany
       showNotification: true, // Czy komunikat o konieczności logowania powinien być wyświetlany
       selectedLanguage: '',
-      languages: ['Angielski', 'Polski', 'Holenderski', 'Holenderski'],
+      languages: ['Angielski', 'Polski', 'Holenderski', 'Francuski'],
       selectedLevel: '',
-      levels: ['Początkujący', 'Średnio zaawansowany', 'Zaawansowany']
+      levels: ['Początkujący', 'Średnio zaawansowany', 'Zaawansowany'],
+      savedLanguage: '',
+      savedLevel: ''
     }
   },
   methods: {
+    confirmSelection() {
+      // Zapisz dane do localStorage
+      localStorage.setItem('language', this.selectedLanguage)
+      localStorage.setItem('level', this.selectedLevel)
+
+      // Zaktualizuj wyświetlane dane
+      this.savedLanguage = this.selectedLanguage
+      this.savedLevel = this.selectedLevel
+    },
+    loadSavedData() {
+      // Odczytaj dane z localStorage
+      this.savedLanguage = localStorage.getItem('language') || ''
+      this.savedLevel = localStorage.getItem('level') || ''
+    },
     checkAuthentication() {
-      this.isAuthenticated = true // Czy użytkownik jest zalogowany
+      // Zmień tę logikę zgodnie z rzeczywistym mechanizmem autoryzacji
+      this.isAuthenticated = true // Zakładając, że użytkownik jest zalogowany
     },
     openLoginForm() {
       setTimeout(() => {
-        // Opóźnienie do wyświetlenia komunikatu, kiedy użytkownik jest niezalogowany
+        // Opóźnienie do wyświetlenia komunikatu, jeśli użytkownik jest niezalogowany
         if (!this.isAuthenticated) {
           this.showLogin = true
         }
-      }, 1000) // Opóźnienie 1 sekund
+      }, 1000) // Opóźnienie 1 sekundy
     },
     closeNotification() {
       this.showNotification = false
     }
   },
   mounted() {
+    // Sprawdź, czy użytkownik jest zalogowany
     this.checkAuthentication()
+
+    // Otwórz formularz logowania, jeśli użytkownik nie jest zalogowany
     if (!this.isAuthenticated) {
       this.openLoginForm()
     }
+
+    // Załaduj zapisane dane dotyczące języka i poziomu zaawansowania
+    this.loadSavedData()
   }
 }
 </script>
@@ -139,7 +174,9 @@ export default {
 }
 
 .notification {
-  margin-bottom: 1rem;
+  color: black;
+  font-size: 25px;
+  background-color: $banner-background;
 }
 
 .modal.is-active {

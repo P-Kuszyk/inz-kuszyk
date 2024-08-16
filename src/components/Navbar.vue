@@ -104,7 +104,7 @@ export default {
       isActive: false,
       showLogin: false,
       showRegister: false,
-      isAuthenticated: false // true = zalogowany | false = niezalogowany
+      isAuthenticated: true // true = zalogowany | false = niezalogowany
     }
   },
   methods: {
