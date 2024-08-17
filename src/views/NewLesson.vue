@@ -2,10 +2,7 @@
   <div>
     <Navbar />
     <section class="section">
-      <div class="container">
-        <h1 class="title">Nowa lekca</h1>
-        <p>Pozdrooo</p>
-      </div>
+      <div class="container"></div>
     </section>
   </div>
 </template>

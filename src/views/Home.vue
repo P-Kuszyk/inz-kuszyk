@@ -15,8 +15,6 @@ export default {
     <Navbar />
     <section class="section">
       <div class="container">
-        <h1 class="title">Strona Główna</h1>
-        <p>Treść strony głównej...</p>
         <div class="banners">
           <Banner>
             <!-- Pierwszy baner -->

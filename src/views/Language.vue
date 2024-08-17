@@ -3,7 +3,6 @@
     <Navbar />
     <section class="section">
       <div class="container">
-        <h1 class="title">Język</h1>
         <div v-if="loading">Ładowanie...</div>
         <div v-if="error" class="error">Wystąpił błąd: {{ error }}</div>
         <ul v-if="words.length">
