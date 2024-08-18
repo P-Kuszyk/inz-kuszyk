@@ -55,12 +55,10 @@
       <div class="field">
         <button class="button is-light" @click="confirmSelection">Potwierdź</button>
       </div>
-      <Banner>
-        <div v-if="savedLanguage && savedLevel" class="notification">
-          <p>Wybrany język: {{ savedLanguage }}</p>
-          <p>Poziom zaawansowania: {{ savedLevel }}</p>
-        </div>
-      </Banner>
+      <div v-if="savedLanguage && savedLevel" class="notification">
+        <p>Wybrany język: {{ savedLanguage }}</p>
+        <p>Poziom zaawansowania: {{ savedLevel }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -181,6 +179,15 @@ export default {
   color: black;
   font-size: 25px;
   background-color: $banner-background;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 25px;
+  border: 2px solid #ccc;
+  margin-top: 3rem;
+  width: 35%;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal.is-active {
