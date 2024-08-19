@@ -20,7 +20,8 @@ db.connect((err) => {
   console.log('Połączono z bazą danych MySQL')
 })
 
-// Endpoint API
+// API: GET  - WORDS FROM TABLE
+
 app.get('/api/words', (req, res) => {
   const sql = 'SELECT * FROM words'
   db.query(sql, (err, results) => {

@@ -1,21 +1,26 @@
-// ścieżka do pliku: src/styles/_variables.scss
+// PATH FOR THE SCSS FILE: src/styles/_variables.scss
 
+// MAIN COLOR FOR APP
 $main-color: #a2c579;
 $secondary-color: #35495e;
 $third-color: #d2de32;
 
+//NAVBAR COLORS
+
 $navbar-color: #016a70;
 $navbar-hover: #ffffdd;
 $navbar-item: #ffffff;
-
-$banner-background: #f0f0f0;
-
-$font-color: #000000;
-
-$login-form: #0a0a0adb;
 
 // LANGUAGE PAGE - TABLE FORM
 
 $table-font: #000001;
 $table-background: #f0f0f0;
 $table-background-even: #ffffdd;
+
+// OTHER COLORS
+
+$banner-background: #f0f0f0;
+
+$font-color: #000000;
+
+$login-form: #0a0a0adb;

@@ -77,8 +77,8 @@ export default {
   data() {
     return {
       showLogin: false,
-      isAuthenticated: false, // Czy użytkownik jest zalogowany
-      showNotification: true, // Czy komunikat o konieczności logowania powinien być wyświetlany
+      isAuthenticated: true,
+      showNotification: true,
       selectedLanguage: '',
       languages: ['Angielski', 'Polski', 'Holenderski', 'Francuski'],
       selectedLevel: '',
@@ -89,26 +89,21 @@ export default {
   },
   methods: {
     confirmSelection() {
-      // Zapisz dane do localStorage
       localStorage.setItem('language', this.selectedLanguage)
       localStorage.setItem('level', this.selectedLevel)
 
-      // Zaktualizuj wyświetlane dane
       this.savedLanguage = this.selectedLanguage
       this.savedLevel = this.selectedLevel
     },
     loadSavedData() {
-      // Odczytaj dane z localStorage
       this.savedLanguage = localStorage.getItem('language') || ''
       this.savedLevel = localStorage.getItem('level') || ''
     },
     checkAuthentication() {
-      // Zmień tę logikę zgodnie z rzeczywistym mechanizmem autoryzacji
-      this.isAuthenticated = true // Zakładając, że użytkownik jest zalogowany
+      this.isAuthenticated = true // Czy użytkownik jest zalogowany
     },
     openLoginForm() {
       setTimeout(() => {
-        // Opóźnienie do wyświetlenia komunikatu, jeśli użytkownik jest niezalogowany
         if (!this.isAuthenticated) {
           this.showLogin = true
         }
@@ -119,15 +114,11 @@ export default {
     }
   },
   mounted() {
-    // Sprawdź, czy użytkownik jest zalogowany
     this.checkAuthentication()
-
-    // Otwórz formularz logowania, jeśli użytkownik nie jest zalogowany
     if (!this.isAuthenticated) {
       this.openLoginForm()
     }
 
-    // Załaduj zapisane dane dotyczące języka i poziomu zaawansowania
     this.loadSavedData()
   }
 }
