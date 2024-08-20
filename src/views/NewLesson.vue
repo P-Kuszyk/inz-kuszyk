@@ -2,7 +2,7 @@
   <div>
     <Navbar />
     <section class="section">
-      <button v-if="!loading && !words.length" @click="fetchWords">Załaduj słowa</button>
+      <button v-if="!loading && !words.length" @click="fetchWords">Rozpocznij lekcje</button>
       <div v-if="loading">Ładowanie...</div>
       <div v-if="error" class="error">Wystąpił błąd: {{ error }}</div>
       <form v-if="words.length" @submit.prevent="submitTranslations">
@@ -13,7 +13,7 @@
             <input v-model="translations[index]" type="text" :placeholder="'Przetłumacz'" />
           </li>
         </ul>
-        <button type="submit" class="save">Zapisz tłumaczenia</button>
+        <button type="submit" class="save">Sprawdź poprawność!</button>
       </form>
     </section>
   </div>
@@ -41,7 +41,7 @@ export default {
       this.error = null
       await new Promise((resolve) => setTimeout(resolve, 500)) // Ładowanie słow po 0.5s
       try {
-        const response = await axios.get('http://localhost:5000/api/words')
+        const response = await axios.get('http://localhost:5000/api/random-words')
         this.words = response.data.slice(0, 10) // Ograniczenie do wyświetlenia tylko 10 rekordów z BD
         this.translations = new Array(this.words.length).fill('')
       } catch (err) {

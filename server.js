@@ -32,6 +32,18 @@ app.get('/api/words', (req, res) => {
   })
 })
 
+// API: GET - RANDOM WORDS FROM THE TABLE
+
+app.get('/api/random-words', (req, res) => {
+  const sql = 'SELECT * FROM words ORDER BY RAND() LIMIT 10'
+  db.query(sql, (err, results) => {
+    if (err) {
+      return res.status(500).json({ error: err.message })
+    }
+    res.json(results)
+  })
+})
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
   console.log(`Serwer działa na porcie ${PORT}`)
