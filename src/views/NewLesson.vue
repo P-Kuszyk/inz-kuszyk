@@ -43,7 +43,7 @@ export default {
       translations: [],
       loading: false,
       error: null,
-      feedback: null // Dodano do wyświetlania wyników sprawdzenia
+      feedback: null
     }
   },
   methods: {
@@ -133,10 +133,6 @@ li {
   border-radius: 10px;
   background-color: #f9f9f9;
   height: 55px;
-
-  &:nth-child(even) {
-    background-color: #f1f1f1; // Parzyste rekordy
-  }
 
   input {
     width: 60%;
