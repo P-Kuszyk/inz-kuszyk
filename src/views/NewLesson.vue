@@ -2,16 +2,18 @@
   <div>
     <Navbar />
     <section class="section">
+      <button v-if="!loading && !words.length" @click="fetchWords">Załaduj słowa</button>
       <div v-if="loading">Ładowanie...</div>
       <div v-if="error" class="error">Wystąpił błąd: {{ error }}</div>
       <form v-if="words.length" @submit.prevent="submitTranslations">
         <ul>
           <li v-for="(word, index) in words" :key="word.id">
-            <span>{{ word.word }} -> </span>
-            <input v-model="translations[index]" type="text" :placeholder="'tłumaczenie...'" />
+            <span class="dbword">{{ word.word }}</span>
+            <span class="arrow"> = </span>
+            <input v-model="translations[index]" type="text" :placeholder="'Przetłumacz'" />
           </li>
         </ul>
-        <button type="submit">Zapisz tłumaczenia</button>
+        <button type="submit" class="save">Zapisz tłumaczenia</button>
       </form>
     </section>
   </div>
@@ -29,22 +31,25 @@ export default {
     return {
       words: [],
       translations: [],
-      loading: true,
+      loading: false,
       error: null
     }
   },
-  async created() {
-    try {
-      const response = await axios.get('http://localhost:5000/api/words')
-      this.words = response.data
-      this.translations = new Array(this.words.length).fill('')
-    } catch (err) {
-      this.error = err.message
-    } finally {
-      this.loading = false
-    }
-  },
   methods: {
+    async fetchWords() {
+      this.loading = true
+      this.error = null
+      await new Promise((resolve) => setTimeout(resolve, 500)) // Ładowanie słow po 0.5s
+      try {
+        const response = await axios.get('http://localhost:5000/api/words')
+        this.words = response.data.slice(0, 10) // Ograniczenie do wyświetlenia tylko 10 rekordów z BD
+        this.translations = new Array(this.words.length).fill('')
+      } catch (err) {
+        this.error = err.message
+      } finally {
+        this.loading = false
+      }
+    },
     async submitTranslations() {
       try {
         const data = this.words.map((word, index) => ({
@@ -52,7 +57,6 @@ export default {
           translation: this.translations[index]
         }))
 
-        // Przykładowe wysłanie danych na backend
         await axios.post('http://localhost:5000/api/translations', { translations: data })
         alert('Tłumaczenia zostały zapisane!')
       } catch (err) {
@@ -64,8 +68,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  text-align: center;
+}
+
+.section {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+
 .error {
   color: red;
+}
+
+.dbword {
+  width: 80px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.arrow {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 ul {
@@ -75,37 +106,58 @@ ul {
   border-collapse: collapse;
   display: grid;
   grid-template-rows: repeat(10, auto);
-  grid-auto-flow: column;
   gap: 10px;
-  width: 30%;
+  width: 100%;
+}
 
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px;
-    border-radius: 10px;
+li {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #f9f9f9;
 
-    &:nth-child(even) {
-    }
+  &:nth-child(even) {
+    background-color: #f1f1f1; // Parzyste rekordy
+  }
 
-    input {
-      width: 60%; /* Rozmiar pola input */
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
+  input {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
   }
 }
 
 button {
-  margin-top: 20px;
   padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
   cursor: pointer;
-  border-radius: 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: $font-color;
+  width: 30%;
+  font-size: xx-large;
+  background-color: $banner-background;
+
+  &:hover {
+    background-color: $navbar-color;
+    color: $navbar-item;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+}
+
+.save {
+  background-color: #4caf50;
+  color: #ffffff;
+  border: 1px solid black;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 2rem;
 
   &:hover {
     background-color: #45a049;
