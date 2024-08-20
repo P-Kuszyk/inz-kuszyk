@@ -44,6 +44,55 @@ app.get('/api/random-words', (req, res) => {
   })
 })
 
+// API: POST - CHECK TRANSLATED WORDS
+
+app.post('/api/check-word', (req, res) => {
+  const translations = req.body.translations
+
+  if (!Array.isArray(translations) || translations.length === 0) {
+    return res.status(400).json({ error: 'Invalid translations data' })
+  }
+
+  const results = []
+  const promises = translations.map((item, index) => {
+    const { word, translation } = item
+
+    if (!word || !translation) {
+      results.push({ index, word, translation, correct: false })
+      return Promise.resolve()
+    }
+
+    const sql = 'SELECT translatedWord FROM words WHERE word = ?'
+    return new Promise((resolve) => {
+      db.query(sql, [word], (err, dbResults) => {
+        if (err || dbResults.length === 0) {
+          results.push({ index, word, translation, correct: false })
+          resolve()
+          return
+        }
+
+        const correctTranslation = dbResults[0].translatedWord
+        results.push({
+          index,
+          word,
+          translation,
+          correct: correctTranslation.toLowerCase() === translation.toLowerCase()
+        })
+        resolve()
+      })
+    })
+  })
+
+  Promise.all(promises)
+    .then(() => {
+      results.sort((a, b) => a.index - b.index)
+      res.json(results)
+    })
+    .catch((err) => {
+      res.status(500).json({ error: err.message })
+    })
+})
+
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
   console.log(`Serwer działa na porcie ${PORT}`)

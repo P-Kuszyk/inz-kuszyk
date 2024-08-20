@@ -15,6 +15,16 @@
         </ul>
         <button type="submit" class="save">Sprawdź poprawność!</button>
       </form>
+      <div v-if="feedback" class="feedback">
+        <ul>
+          <li v-for="(item, index) in feedback" :key="index">
+            {{ item.word }}:
+            <span :class="{ correct: item.correct, incorrect: !item.correct }">
+              {{ item.correct ? '✅' : '❌' }}</span
+            >
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -32,14 +42,15 @@ export default {
       words: [],
       translations: [],
       loading: false,
-      error: null
+      error: null,
+      feedback: null // Dodano do wyświetlania wyników sprawdzenia
     }
   },
   methods: {
     async fetchWords() {
       this.loading = true
       this.error = null
-      await new Promise((resolve) => setTimeout(resolve, 500)) // Ładowanie słow po 0.5s
+      await new Promise((resolve) => setTimeout(resolve, 500)) // Ładowanie słów po 0.5s
       try {
         const response = await axios.get('http://localhost:5000/api/random-words')
         this.words = response.data.slice(0, 10) // Ograniczenie do wyświetlenia tylko 10 rekordów z BD
@@ -51,16 +62,20 @@ export default {
       }
     },
     async submitTranslations() {
+      this.feedback = null
       try {
         const data = this.words.map((word, index) => ({
-          wordId: word.id,
+          word: word.word,
           translation: this.translations[index]
         }))
 
-        await axios.post('http://localhost:5000/api/translations', { translations: data })
-        alert('Tłumaczenia zostały zapisane!')
+        const response = await axios.post('http://localhost:5000/api/check-word', {
+          translations: data
+        })
+
+        this.feedback = response.data
       } catch (err) {
-        this.error = 'Nie udało się zapisać tłumaczeń: ' + err.message
+        this.error = 'Nie udało się sprawdzić tłumaczeń: ' + err.message
       }
     }
   }
@@ -106,7 +121,7 @@ ul {
   border-collapse: collapse;
   display: grid;
   grid-template-rows: repeat(10, auto);
-  gap: 10px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -117,6 +132,7 @@ li {
   border: 2px solid #ccc;
   border-radius: 10px;
   background-color: #f9f9f9;
+  height: 55px;
 
   &:nth-child(even) {
     background-color: #f1f1f1; // Parzyste rekordy
