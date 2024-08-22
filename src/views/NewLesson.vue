@@ -18,7 +18,6 @@
       <div v-if="feedback" class="feedback">
         <ul>
           <li v-for="(item, index) in feedback" :key="index">
-            {{ item.word }}:
             <span :class="{ correct: item.correct, incorrect: !item.correct }">
               {{ item.correct ? '✅' : '❌' }}</span
             >
