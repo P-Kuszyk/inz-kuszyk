@@ -28,10 +28,10 @@
 
     <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isActive }">
       <div class="navbar-start">
-        <router-link class="navbar-item" to="/">Strona Główna</router-link>
-        <router-link class="navbar-item" to="/new-lesson">Nowa Lekcja</router-link>
-        <router-link class="navbar-item" to="/language">Język</router-link>
-        <router-link class="navbar-item" to="/user-panel">Panel Użytkownika</router-link>
+        <router-link class="navbar-item" to="/">Strona główna</router-link>
+        <router-link class="navbar-item" to="/new-lesson">Nowa lekcja</router-link>
+        <router-link class="navbar-item" to="/language">Słownik</router-link>
+        <router-link class="navbar-item" to="/user-panel">Panel użytkownika</router-link>
       </div>
 
       <div class="navbar-end">
