@@ -61,7 +61,7 @@ export default {
 .banner {
   width: 80%;
   height: 150px;
-  background-color: #f0f0f0;
+  background-color: $banner-background;
   display: flex;
   align-items: center;
   justify-content: center;
