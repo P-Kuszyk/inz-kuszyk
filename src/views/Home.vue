@@ -18,21 +18,12 @@ export default {
         <div class="banners">
           <Banner>
             <!-- Pierwszy baner -->
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
+            <p>Learn Language!</p>
           </Banner>
           <Banner>
             <!-- Drugi baner -->
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-            mollit anim id est laborum.
+            Nauka języków obcych może być nie tylko przydatna, ale i fascynująca, a nowoczesne
+            aplikacje mogą sprawić, że stanie się ona prawdziwą przyjemnością!
           </Banner>
         </div>
       </div>
@@ -67,5 +58,10 @@ export default {
   justify-content: center;
   border: 2px solid #ccc;
   border-radius: 10px;
+}
+
+p {
+  font-style: italic;
+  font-size: 55px;
 }
 </style>
