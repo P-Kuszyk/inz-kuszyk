@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 import NewLesson from '@/views/NewLesson.vue'
 import Language from '@/views/Language.vue'
 import UserPanel from '@/views/UserPanel.vue'
+import Note from '@/views/Note.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/user-panel',
     name: 'UserPanel',
     component: UserPanel
+  },
+  {
+    path: '/note',
+    name: 'Note',
+    component: Note
   }
 ]
 

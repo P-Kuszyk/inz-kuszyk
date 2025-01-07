@@ -32,6 +32,7 @@
         <router-link class="navbar-item" to="/new-lesson">Nowa lekcja</router-link>
         <router-link class="navbar-item" to="/language">Słownik</router-link>
         <router-link class="navbar-item" to="/user-panel">Panel użytkownika</router-link>
+        <router-link class="navbar-item" to="/note">Notatki</router-link>
       </div>
 
       <div class="navbar-end">
