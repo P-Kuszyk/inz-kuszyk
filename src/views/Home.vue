@@ -22,8 +22,8 @@ export default {
           </Banner>
           <Banner>
             <!-- Drugi baner -->
-            Nauka języków obcych może być nie tylko przydatna, ale i fascynująca, a nowoczesne
-            aplikacje mogą sprawić, że stanie się ona prawdziwą przyjemnością!
+            Nauka języków obcych może być nie tylko przydatna, ale i fascynująca, a nowoczesna
+            aplikacja może sprawić, że stanie się ona prawdziwą przyjemnością!
           </Banner>
         </div>
       </div>
