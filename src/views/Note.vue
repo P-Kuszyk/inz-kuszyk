@@ -13,6 +13,7 @@ export default {
     <textarea></textarea>
     <textarea></textarea>
     <textarea></textarea>
+    <textarea></textarea>
   </div>
 </template>
 <style scoped lang="scss">
@@ -21,7 +22,8 @@ export default {
   justify-content: center;
 }
 textarea {
-  width: 33%;
+  width: 100%;
   resize: none;
+  padding: 5px;
 }
 </style>
