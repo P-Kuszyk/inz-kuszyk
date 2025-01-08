@@ -24,7 +24,7 @@ db.connect((err) => {
 // API: GET  - WORDS FROM TABLE
 
 app.get('/api/words', (req, res) => {
-  const sql = 'SELECT * FROM words_eng'
+  const sql = 'SELECT * FROM words_fr'
   db.query(sql, (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message })
