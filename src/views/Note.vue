@@ -32,12 +32,14 @@ export default {
 }
 textarea {
   margin-top: 50px;
+  margin-right: 15px;
   width: 100%;
   resize: none;
   padding: 5px;
   height: 200px;
   padding: 15px;
   border: none;
+  border-radius: 10px;
   background: linear-gradient(135deg, #ffffdd 0%, #e0ffe0 100%);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   resize: vertical;
@@ -47,6 +49,9 @@ textarea {
     outline: none;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     background: linear-gradient(135deg, #e0ffe0 0%, #c2e9fb 100%);
+  }
+  &:nth-child(1) {
+    margin-left: 15px;
   }
   &::placeholder {
     color: #666;
