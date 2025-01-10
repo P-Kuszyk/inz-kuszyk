@@ -18,7 +18,7 @@ export default {
         <div class="banners">
           <Banner>
             <!-- Pierwszy baner -->
-            <p>Learn Language!</p>
+            <p>Zacznij naukę juz dziś!</p>
           </Banner>
           <Banner>
             <!-- Drugi baner -->
