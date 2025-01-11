@@ -1,10 +1,7 @@
 <template>
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <router-link class="navbar-item" to="/">
-        <img src="/src/assets/Inz_Logo.png" width="100" height="2000" alt="Logo" />
-      </router-link>
-
+      <img src="/src/assets/Inz_Logo.png" width="110" height="120" alt="Logo" />
       <a
         role="button"
         class="navbar-burger"
@@ -118,6 +115,7 @@ export default {
 
 .navbar-item {
   color: $navbar-item;
+  font-size: 17px;
 }
 .navbar-burger {
   color: $navbar-item;
@@ -126,6 +124,11 @@ export default {
 .navbar-brand img {
   max-height: 3.5rem;
   margin-right: 2rem;
+}
+
+img {
+  padding: 2px;
+  margin: 3px;
 }
 
 .level {
