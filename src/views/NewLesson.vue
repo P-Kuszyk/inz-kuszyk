@@ -25,6 +25,9 @@
         </ul>
       </div>
     </section>
+    <button class="reset" v-if="showButton" @click="resetAndFetchWords">
+      Wygeneruj kolejny test
+    </button>
   </div>
 </template>
 
@@ -42,7 +45,8 @@ export default {
       translations: [],
       loading: false,
       error: null,
-      feedback: null
+      feedback: null,
+      showButton: false
     }
   },
   methods: {
@@ -73,9 +77,21 @@ export default {
         })
 
         this.feedback = response.data
+        this.showButton = true
       } catch (err) {
         this.error = 'Nie udało się sprawdzić tłumaczeń: ' + err.message
       }
+    },
+    resetAndFetchWords() {
+      // Resetowanie stanu
+      this.words = []
+      this.translations = []
+      this.feedback = null
+      this.error = null
+      this.showButton = false
+
+      // Wywołanie metody fetchWords
+      this.fetchWords()
     }
   }
 }
@@ -150,6 +166,7 @@ button {
   width: 30%;
   font-size: xx-large;
   background-color: $banner-background;
+  margin-top: 1rem;
 
   &:hover {
     background-color: $navbar-color;
@@ -169,6 +186,26 @@ button {
   cursor: pointer;
   width: 100%;
   margin-top: 2rem;
+
+  &:hover {
+    background-color: #45a049;
+  }
+}
+
+.reset {
+  background-color: #4caf50;
+  color: #ffffff;
+  border: 1px solid black;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 15.5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-left: 41.2%;
 
   &:hover {
     background-color: #45a049;
