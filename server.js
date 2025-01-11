@@ -36,7 +36,7 @@ app.get('/api/words', (req, res) => {
 // API: GET - RANDOM WORDS FROM THE TABLE
 
 app.get('/api/random-words', (req, res) => {
-  const sql = 'SELECT * FROM words_eng ORDER BY RAND() LIMIT 10'
+  const sql = 'SELECT * FROM words_fr ORDER BY RAND() LIMIT 10'
   db.query(sql, (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message })
@@ -63,7 +63,7 @@ app.post('/api/check-word', (req, res) => {
       return Promise.resolve()
     }
 
-    const sql = 'SELECT translatedWord FROM words_eng WHERE word = ?'
+    const sql = 'SELECT translatedWord FROM words_fr WHERE word = ?'
     return new Promise((resolve) => {
       db.query(sql, [word], (err, dbResults) => {
         if (err || dbResults.length === 0) {

@@ -50,7 +50,7 @@
         <div class="navbar-item">
           <div class="buttons">
             <!-- Jeśli jest zalogowany -->
-            <template v-if="isAuthenticated"> Witaj xyz! </template>
+            <template v-if="isAuthenticated"> Witaj Przemek! </template>
             <!-- Jeśli nie jest zalogowany-->
             <template v-else>
               <button class="button is-success" @click="showRegister = true">
