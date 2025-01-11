@@ -154,7 +154,7 @@ img {
 .field.has-addons {
   .control {
     .input {
-      background-color: #d3d3d3;
+      background-color: $input-color;
       border-color: $main-color;
       width: 250px;
       color: black;

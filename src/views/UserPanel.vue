@@ -4,16 +4,13 @@
 
     <!-- Użytkownik niezalogowany -->
     <div v-if="!isAuthenticated" class="notification is-warning">
-      <button class="delete" @click="closeNotification"></button>
       Musisz się zalogować, aby uzyskać dostęp do tej strony.
     </div>
 
     <div v-if="showLogin" class="modal is-active">
       <div class="modal-background" @click="showLogin = false"></div>
       <div class="modal-content">
-        <div class="box">
-          <LoginForm />
-        </div>
+        <LoginForm />
       </div>
       <button class="modal-close is-large" @click="showLogin = false" aria-label="close"></button>
     </div>
@@ -198,11 +195,10 @@ export default {
 
 .modal-content {
   position: relative;
-  background: white;
-  border-radius: 6px;
-  padding: 1rem;
   max-width: 500px;
   width: 90%;
+  border: 3px solid black;
+  border-radius: 15px;
 }
 
 .modal-close {
