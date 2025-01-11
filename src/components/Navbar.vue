@@ -2,12 +2,7 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <router-link class="navbar-item" to="/">
-        <img
-          src="https://bulma.io/assets/brand/Bulma%20Logo%20White.png"
-          width="112"
-          height="28"
-          alt="Logo"
-        />
+        <img src="/src/assets/Inz_Logo.png" width="100" height="2000" alt="Logo" />
       </router-link>
 
       <a
