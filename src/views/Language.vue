@@ -53,7 +53,7 @@ ul {
   grid-template-rows: repeat(10, auto);
   grid-auto-flow: column;
   gap: 10px;
-  width: 35%;
+  width: 45%;
 
   li {
     display: flex;
